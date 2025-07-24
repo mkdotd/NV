@@ -19,7 +19,7 @@ int userChoice = -1;
 while (userChoice != 0)
 {
     Console.WriteLine($"Array size : {arraySize} \nArray items: {string.Join(",", array)}");
-    Console.WriteLine("Select operation \n 1 - list \n 2 - Specific Index \n 3 - Delete at the end \n 4 - Insert at end\n 0 - Quit ");
+    Console.WriteLine("Select operation \n 1 - list \n 2 - Specific Index \n 3 - Delete at the end \n 4 - Insert at end\n 5 - Insert at Index\n 0 - Quit ");
 
     userChoice = int.Parse(Console.ReadLine());
 
@@ -36,6 +36,12 @@ while (userChoice != 0)
             break;
         case 4:
             InsertAtEnd();
+            break;
+        case 5:
+            InsertAtIndex();
+            break;
+        case 6:
+            DeleteAtIndex();
             break;
         case 0:
             DisplayArrayItems();
@@ -55,7 +61,7 @@ void DisplaySpecificIndexItem()
 {
     Console.WriteLine("Enter index number");
     int index = int.Parse(Console.ReadLine());
-    if(index < 0 || index >= arraySize)
+    if (index < 0 || index >= arraySize)
     {
         Console.WriteLine("Out of bound index");
         return;
@@ -92,3 +98,52 @@ void InsertAtEnd()
     Console.WriteLine("Time complexity O(1)");
 }
 
+void InsertAtIndex()
+{
+    if (arrayLength == arraySize)
+    {
+        Console.WriteLine($"Array full. Cannot insert");
+        return;
+    }
+    Console.WriteLine("Enter index number");
+    int index = int.Parse(Console.ReadLine());
+    if (index < 0 || index >= arraySize)
+    {
+        Console.WriteLine("Out of bound index");
+        return;
+    }
+    for (int i = arraySize - 1; i > index; i--)
+    {
+        array[i] = array[i - 1];
+    }
+    Console.WriteLine($"Enter number to insert at {index}");
+
+    array[index] = int.Parse(Console.ReadLine());
+    arrayLength++;
+    Console.WriteLine("Time complexity O(n)");
+}
+
+void DeleteAtIndex()
+{
+
+    if (arrayLength == 0)
+    {
+        Console.WriteLine($"Array Empty. Nothing to delete");
+        return;
+    }
+
+    Console.WriteLine("Enter index number");
+    int index = int.Parse(Console.ReadLine());
+    if (index < 0 || index >= arraySize)
+    {
+        Console.WriteLine("Out of bound index");
+        return;
+    }
+    
+    for (int i = index; i <= arraySize - 1; i++)
+    {
+        array[i] = i == arraySize - 1 ? 0 : array[i + 1];
+    }
+    arrayLength--;
+    Console.WriteLine("Time complexity O(n)");
+}
