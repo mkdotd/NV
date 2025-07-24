@@ -1,23 +1,25 @@
 ﻿// See https://aka.ms/new-console-template for more information
+using System;
 using System.Runtime.CompilerServices;
 
-Console.WriteLine("Hello, World!");
 Console.WriteLine("Enter array size");
 int arraySize = int.Parse(Console.ReadLine());
-
+int arrayLength = 0;
 int[] array = new int[arraySize];
 
 for (int i = 0; i < arraySize; i++)
 {
     Console.WriteLine($"Enter {i + 1} number");
-    array[i] = int.Parse(Console.ReadLine());
+    array[arrayLength] = int.Parse(Console.ReadLine());
+    arrayLength++;
 }
 
 int userChoice = -1;
 
 while (userChoice != 0)
 {
-    Console.WriteLine("Select operation \n 1 - list \n 0 - Quit ");
+    Console.WriteLine($"Array size : {arraySize} \nArray items: {string.Join(",", array)}");
+    Console.WriteLine("Select operation \n 1 - list \n 2 - Specific Index \n 3 - Delete at the end \n 4 - Insert at end\n 0 - Quit ");
 
     userChoice = int.Parse(Console.ReadLine());
 
@@ -25,6 +27,15 @@ while (userChoice != 0)
     {
         case 1:
             DisplayArrayItems();
+            break;
+        case 2:
+            DisplaySpecificIndexItem();
+            break;
+        case 3:
+            DeleteAtEnd();
+            break;
+        case 4:
+            InsertAtEnd();
             break;
         case 0:
             DisplayArrayItems();
@@ -39,5 +50,45 @@ void DisplayArrayItems()
         Console.WriteLine(item.ToString());
 
     Console.WriteLine("Time complexity O(n)");
+}
+void DisplaySpecificIndexItem()
+{
+    Console.WriteLine("Enter index number");
+    int index = int.Parse(Console.ReadLine());
+    if(index < 0 || index >= arraySize)
+    {
+        Console.WriteLine("Out of bound index");
+        return;
+    }
+
+
+    Console.WriteLine($"Item at index {index}:{array[index]}");
+    Console.WriteLine("Time complexity O(1)");
+}
+
+void DeleteAtEnd()
+{
+    if (arrayLength == 0)
+    {
+        Console.WriteLine($"Nothing to delete");
+        return;
+    }
+
+    array[arrayLength - 1] = 0;
+    Console.WriteLine($"Deleted item at index {arrayLength}");
+    arrayLength--;
+    Console.WriteLine("Time complexity O(1)");
+}
+void InsertAtEnd()
+{
+    if (arrayLength == arraySize)
+    {
+        Console.WriteLine($"Array full");
+        return;
+    }
+    Console.WriteLine("Enter number to insert at the end");
+    array[arrayLength] = int.Parse(Console.ReadLine());
+    arrayLength++;
+    Console.WriteLine("Time complexity O(1)");
 }
 
