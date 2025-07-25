@@ -19,7 +19,7 @@ int userChoice = -1;
 while (userChoice != 0)
 {
     Console.WriteLine($"Array size : {arraySize} \nArray items: {string.Join(",", array)}");
-    Console.WriteLine("Select operation \n 1 - list \n 2 - Specific Index \n 3 - Delete at the end \n 4 - Insert at end\n 5 - Insert at Index\n 0 - Quit ");
+    Console.WriteLine("Select operation \n\t 1 - list \n\t 2 - Specific Index \n\t 3 - Delete at the end \n\t 4 - Insert at end\n\t 5 - Insert at Index\n\t 6 - Delete at Index\n\t 0 - Quit ");
 
     userChoice = int.Parse(Console.ReadLine());
 
@@ -44,7 +44,6 @@ while (userChoice != 0)
             DeleteAtIndex();
             break;
         case 0:
-            DisplayArrayItems();
             break;
     }
 
@@ -125,7 +124,6 @@ void InsertAtIndex()
 
 void DeleteAtIndex()
 {
-
     if (arrayLength == 0)
     {
         Console.WriteLine($"Array Empty. Nothing to delete");
@@ -134,16 +132,16 @@ void DeleteAtIndex()
 
     Console.WriteLine("Enter index number");
     int index = int.Parse(Console.ReadLine());
-    if (index < 0 || index >= arraySize)
+    if (index < 0 || index >= arrayLength)
     {
-        Console.WriteLine("Out of bound index");
+        Console.WriteLine("Out of bound index/ No item to delete");
         return;
     }
-    
-    for (int i = index; i <= arraySize - 1; i++)
+
+    for (int i = index + 1; i < arrayLength ; i++)
     {
-        array[i] = i == arraySize - 1 ? 0 : array[i + 1];
+        array[i - 1] = array[i];
     }
-    arrayLength--;
+    array[--arrayLength] = 0;
     Console.WriteLine("Time complexity O(n)");
 }
