@@ -5,7 +5,7 @@ using System.Runtime.CompilerServices;
 
 
 
-int result = RemoveDuplicates.RemoveDuplicate([2, 10, 10, 30, 30, 30]);
+int result = RemoveElement.RemoveElements([0, 1, 2, 2, 3, 0, 4, 2], 2);
 return;
 
 Console.WriteLine("Enter array size");
