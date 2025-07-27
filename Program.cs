@@ -1,6 +1,12 @@
 ﻿// See https://aka.ms/new-console-template for more information
+using Arrays;
 using System;
 using System.Runtime.CompilerServices;
+
+
+
+int result = RemoveDuplicates.RemoveDuplicate([2, 10, 10, 30, 30, 30]);
+return;
 
 Console.WriteLine("Enter array size");
 int arraySize = int.Parse(Console.ReadLine());
