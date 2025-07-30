@@ -5,7 +5,8 @@ using System.Runtime.CompilerServices;
 
 
 
-int result = RemoveElement.RemoveElements([0, 1, 2, 2, 3, 0, 4, 2], 2);
+//var result = Solution.ReverseList(new ListNode(0, new ListNode(1, new ListNode(25, new ListNode(3)))));
+var result = Solution.ReverseList(new ListNode());
 return;
 
 Console.WriteLine("Enter array size");
