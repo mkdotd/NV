@@ -5,8 +5,9 @@ using System.Runtime.CompilerServices;
 
 
 
-//var result = Solution.ReverseList(new ListNode(0, new ListNode(1, new ListNode(25, new ListNode(3)))));
-var result = Solution.ReverseList(new ListNode());
+//var result = Solution.MergeTwoLists(new ListNode(1, new ListNode(2, new ListNode(4))), new ListNode(1, new ListNode(3, new ListNode(5))));
+var result = Solution.MergeTwoLists(new ListNode(5), new ListNode(1, new ListNode(2, new ListNode(4))));
+//var result = Solution.ReverseList(new ListNode());
 return;
 
 Console.WriteLine("Enter array size");
