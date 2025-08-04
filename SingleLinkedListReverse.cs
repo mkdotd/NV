@@ -21,8 +21,9 @@ namespace Arrays
         public static ListNode ReverseList(ListNode head)
         {
             ListNode lastHead = null;
-            while (head.next != null) { 
-            
+            while (head.next != null)
+            {
+
                 var tempNext = head.next;
                 head.next = lastHead;
                 lastHead = head;
@@ -34,11 +35,38 @@ namespace Arrays
 
         public static ListNode MergeTwoLists(ListNode list1, ListNode list2)
         {
-            ListNode firstNode;
-            
+            ListNode firstNode = new ListNode();
+            ListNode pointer = firstNode;
+            while (list1 != null || list2 != null)
+            {
+                if (list1 == null)
+                {
+                    pointer.next = list2;
+                    break;
+                }
+                else if (list2 == null)
+                {
+                    pointer.next = list1;
+                    break;
+                }
+                else
+                {
 
+                    if (list1.val <= list2.val)
+                    {
+                        pointer.next = list1;
+                        list1 = list1.next;
+                    }
+                    else
+                    {
+                        pointer.next = list2;
+                        list2 = list2.next;
+                    }
+                    pointer = pointer.next;
+                }
 
-            return firstNode;
+            }
+            return firstNode.next;
         }
     }
 }
