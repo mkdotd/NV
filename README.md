@@ -44,9 +44,3 @@ To explore or contribute to this repository:
 3.  **Browse the solutions:** Each topic has its own class file. 
 
 ---
-
-## 👋 Connect
-
-Feel free to connect with me if you have any questions, suggestions, or just want to discuss DSA!
-
-* **GitHub:** [mkdotd](https://github.com/mkdotd)
