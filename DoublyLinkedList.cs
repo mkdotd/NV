@@ -33,7 +33,7 @@ namespace Arrays
 
         public int Get(int index)
         {
-            if(index < 0 || index >= length)
+            if (index < 0 || index >= length)
             {
                 return -1; // Index out of bounds
             }
@@ -74,7 +74,11 @@ namespace Arrays
 
         public void AddAtIndex(int index, int val)
         {
-            if (index == length)
+            if (index == 0)
+            {
+                AddAtHead(val);
+                return;
+            }else if (index == length)
             {
                 AddAtTail(val);
                 return;
@@ -91,29 +95,35 @@ namespace Arrays
             nodeToInsert.Prev = prevNode;
             nodeToInsert.Next = pointer;
             pointer.Prev = nodeToInsert;
+            length++;
 
         }
 
         public void DeleteAtIndex(int index)
         {
-            if (index == length && tail != null)
-            {
-                tail = tail.Prev;
-                if (tail != null)
-                {
-                    tail.Next = null;
-                }
-                return;
-            }
-            else if (index == 0 && head != null)
+            if (index == 0 && head != null)
             {
                 head = head.Next;
                 if (head != null)
                 {
                     head.Prev = null;
                 }
-
+                length--;
                 return;
+            }
+            else if (index == length - 1 && tail != null)
+            {
+                tail = tail.Prev;
+                if (tail != null)
+                {
+                    tail.Next = null;
+                }
+                length--;
+                return;
+            }
+            else if (index >= length)
+            {
+                return;   
             }
             var pointer = GetNodeAtIndex(index);
             if (pointer != null)
@@ -125,7 +135,9 @@ namespace Arrays
                 pointer.Next = null;
                 prevNode.Next = nextNode;
                 nextNode.Prev = prevNode;
+                length--;
             }
+
         }
 
         private Node GetNodeAtIndex(int index)
@@ -135,6 +147,7 @@ namespace Arrays
             while (pointerCounter < index)
             {
                 pointer = pointer.Next;
+                pointerCounter++;
             }
             return pointer;
         }

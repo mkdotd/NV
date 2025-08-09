@@ -5,8 +5,22 @@ using System.Runtime.CompilerServices;
 
 
 
+var dl = new DoublyLinkedList();
+dl.AddAtHead(2);
+dl.DeleteAtIndex(1);
+dl.AddAtHead(2);
+dl.AddAtHead(7);
+dl.AddAtHead(3);
+dl.AddAtHead(2);
+dl.AddAtHead(5);
+dl.AddAtTail(5);
+dl.Get(5);
+dl.DeleteAtIndex(6);
+dl.DeleteAtIndex(4);
+
+
 //var result = Solution.MergeTwoLists(new ListNode(1, new ListNode(2, new ListNode(4))), new ListNode(1, new ListNode(3, new ListNode(5))));
-var result = Solution.MergeTwoLists(new ListNode(1, new ListNode(2, new ListNode(4))), new ListNode(1, new ListNode(3, new ListNode(5))));
+//var result = Solution.MergeTwoLists(new ListNode(1, new ListNode(2, new ListNode(4))), new ListNode(1, new ListNode(3, new ListNode(5))));
 //var result = Solution.ReverseList(new ListNode());
 return;
 
